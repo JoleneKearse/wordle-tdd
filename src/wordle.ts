@@ -1,13 +1,34 @@
-export const scoreGuess = (guess: string, answer: string): string[] => {
+export const CORRECT = "C";
+export const ALMOST = "A";
+export const INCORRECT = "I";
+export const EMPTY = "";
+
+export type LetterScore = typeof CORRECT | typeof ALMOST | typeof INCORRECT;
+export type GuessScore = LetterScore[];
+
+export const scoreGuess = (guess: string, answer: string): GuessScore => {
+  const answerLetters = answer.split("");
+  const guessLetters = guess.split("");
   const score = [];
 
-  for (let i = 0; i < guess.length; i++) {
-    if (guess[i] === answer[i]) {
-      score[i] = "✅";
-    } else if (answer.includes(guess[i])) {
-      score[i] = "😜";
+  for (let i = 0; i < guessLetters.length; i++) {
+    if (guessLetters[i] === answerLetters[i]) {
+      score[i] = CORRECT;
+      answerLetters[i] = EMPTY;
+      guessLetters[i] = EMPTY;
+    } 
+  }
+
+  for (let i = 0; i < guessLetters.length; i++) {
+    if (guessLetters[i] === EMPTY) continue;
+
+    const answerIdx = answerLetters.findIndex(char => char === guessLetters[i]);
+    if (answerIdx > -1) {
+      score[i] = ALMOST;
+      
+      answerLetters[answerIdx] = EMPTY;
     } else {
-      score[i] = "❌";
+      score[i] = INCORRECT;
     }
   }
   return score;
