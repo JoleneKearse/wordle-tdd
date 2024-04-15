@@ -5,11 +5,32 @@ export const EMPTY = "";
 
 export type LetterScore = typeof CORRECT | typeof ALMOST | typeof INCORRECT;
 export type GuessScore = LetterScore[];
+export type Game = {
+  answer: string;
+  hardMode: boolean;
+  guesses: string[];
+  scores: GuessScore[];
+  guessesRemaining: number;
+  dictionary: string[];
+  maxWordLength: number;
+}
+
+export const createGame = (dictionary: string[], answer: string, hardMode: false): Game => {
+  return {
+    answer,
+    hardMode,
+    guesses: [],
+    scores: [],
+    guessesRemaining: 6,
+    dictionary,
+    maxWordLength: 4,
+  }
+}
 
 export const scoreGuess = (guess: string, answer: string): GuessScore => {
   const answerLetters = answer.split("");
   const guessLetters = guess.split("");
-  const score = [];
+  const score: GuessScore = [];
 
   for (let i = 0; i < guessLetters.length; i++) {
     if (guessLetters[i] === answerLetters[i]) {

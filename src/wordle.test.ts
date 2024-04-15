@@ -1,6 +1,7 @@
-import { describe, expect, it } from "vitest";
+import { beforeEach, describe, expect, it } from "vitest";
 import * as Wordle from "./wordle"
 
+// scoring function
 describe("scoreGuess", () => {
   it("identifies correct letters", () => {
     expect(Wordle.scoreGuess("a", "a")).toEqual(["C"]);
@@ -37,5 +38,22 @@ describe("scoreGuess", () => {
     ["bzyx", "abcb", "AIII"],
   ])("guess: %s, answer: %s, result: %s", (guess, answer, result) => {
     expect(Wordle.scoreGuess(guess, answer)).toEqual(result.split(""));
+  })
+})
+
+// guess
+describe("validateGuess", () => {
+  let game: Wordle.Game;
+
+  beforeEach(() => {
+    const dictionary = [
+      "aaaa", "aabb", "bbaa", "bbbb", "bbba", "aaab"
+    ];
+    const answer = "aaab";
+    game = Wordle.createGame(dictionary, answer, false);
+  });
+
+  it("validates word is in dictionary", () => {
+    expect(Wordle.validateGuess("aaaa", game)).toEqual(true);
   })
 })
