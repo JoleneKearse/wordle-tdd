@@ -60,12 +60,13 @@ export const validateGuess = (guess: string, game: Game) => {
   // reject already guessed words
   if (game.guesses.includes(guess)) return false;
   // for hard mode, ensure known correct letters are in the guess
-  if (game.guesses.length) {
+  if (game.guesses.length && game.hardMode) {
     const lastGuess = game.guesses[game.guesses.length - 1];
     const lastScore = game.scores[game.scores.length - 1];
 
     for (let i = 0; i < guess.length; i++) {
       if (lastScore[i] === CORRECT && lastGuess[i] !== guess[i]) return false;
+      if (lastScore[i] === ALMOST && !guess.includes(lastGuess[i])) return false;
     }
   }
   
