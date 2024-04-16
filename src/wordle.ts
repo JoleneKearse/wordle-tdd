@@ -56,5 +56,18 @@ export const scoreGuess = (guess: string, answer: string): GuessScore => {
 };
 
 export const validateGuess = (guess: string, game: Game) => {
-  return game.dictionary.includes(guess) ? true : false;
+  if (!game.dictionary.includes(guess)) return false;
+  // reject already guessed words
+  if (game.guesses.includes(guess)) return false;
+  // for hard mode, ensure known correct letters are in the guess
+  if (game.guesses.length) {
+    const lastGuess = game.guesses[game.guesses.length - 1];
+    const lastScore = game.scores[game.scores.length - 1];
+
+    for (let i = 0; i < guess.length; i++) {
+      if (lastScore[i] === CORRECT && lastGuess[i] !== guess[i]) return false;
+    }
+  }
+  
+  return true;
 };

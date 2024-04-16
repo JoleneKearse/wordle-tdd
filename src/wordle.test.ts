@@ -59,4 +59,16 @@ describe("validateGuess", () => {
   it("rejects words that are not in the dictionary", () => {
     expect(Wordle.validateGuess("cccc", game)).toEqual(false);
   });
+  it("rejects words that have previously been guessed", () => {
+    // modify game to have those guesses stored
+    game.guesses.push("aaaa");
+    expect(Wordle.validateGuess("aaaa", game)).toEqual(false);
+  });
+  // for hard mode
+  it("rejects words that does not include known CORRECT letters", () => {
+    // modify game to have those guesses stored
+    game.guesses.push("aabb");
+    game.scores.push(Wordle.scoreGuess("aabb", game.answer));
+    expect(Wordle.validateGuess("bbaa", game)).toEqual(false);
+  });
 })
