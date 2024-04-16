@@ -16,7 +16,7 @@ describe("scoreGuess", () => {
   it("matches letters only once", () => {
     expect(Wordle.scoreGuess("cczy", "abcd")).toEqual(["A", "I", "I", "I"]);
   });
-
+  // duplicates in both, but check for correct letters before almost letters
   it("matches correct letters first", () => {
     expect(Wordle.scoreGuess("zdyd", "abcd")).toEqual(["I", "I", "I", "C"]);
   });
@@ -41,7 +41,7 @@ describe("scoreGuess", () => {
   })
 })
 
-// guess
+// guess validation
 describe("validateGuess", () => {
   let game: Wordle.Game;
 
@@ -53,7 +53,10 @@ describe("validateGuess", () => {
     game = Wordle.createGame(dictionary, answer, false);
   });
 
-  it("validates word is in dictionary", () => {
+  it("accepts words that are in the dictionary", () => {
     expect(Wordle.validateGuess("aaaa", game)).toEqual(true);
-  })
+  });
+  it("rejects words that are not in the dictionary", () => {
+    expect(Wordle.validateGuess("cccc", game)).toEqual(false);
+  });
 })
