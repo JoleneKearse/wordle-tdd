@@ -61,26 +61,23 @@ describe("validateGuess", () => {
   });
   it("rejects words that have previously been guessed", () => {
     // modify game to have those guesses stored
-    game.guesses.push("aaaa");
+    game = Wordle.makeGuess("aaaa", game);
     expect(Wordle.validateGuess("aaaa", game)).toEqual(false);
   });
   // for hard mode
   it("accepts words that do not use CORRECT letters in EASY mode", () => {
-    game.guesses.push("aabb");
-    game.scores.push(Wordle.scoreGuess("aabb", game.answer));
+    game = Wordle.makeGuess("aabb", game);
     expect(Wordle.validateGuess("bbaa", game)).toEqual(true);
   });
   it("rejects words that does not include known CORRECT letters in HARD mode", () => {
     // modify game to have those guesses stored
-    game.guesses.push("aabb");
-    game.scores.push(Wordle.scoreGuess("aabb", game.answer));
+    game = Wordle.makeGuess("aabb", game);
     game.hardMode = true;
     expect(Wordle.validateGuess("bbaa", game)).toEqual(false);
   });
   it("rejects words that does not include known ALMOST letters in HARD mode", () => {
     // modify game to have those guesses stored
-    game.guesses.push("bbba");
-    game.scores.push(Wordle.scoreGuess("bbba", game.answer));
+    game = Wordle.makeGuess("bbba", game);
     game.hardMode = true;
     expect(Wordle.validateGuess("aaaa", game)).toEqual(false);
   });
