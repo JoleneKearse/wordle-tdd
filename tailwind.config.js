@@ -13,6 +13,7 @@ export default {
       "neutral-400": "#858585", // dark mode
       "neutral-500": "#474747", // light mode
       "neutral-900": "#0A0A0A",  // dark mode
+      "messages-light": "#A84FC0",
     },
     },
   },
