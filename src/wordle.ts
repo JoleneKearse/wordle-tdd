@@ -82,4 +82,6 @@ export const makeGuess = (guess: string, game: Game) => {
   };
 };
 
-export const keyboard: string[] = ["q", "w", "e", "r", "t", "y", "u", "i", "o", "p", "a", "s", "d", "f", "g", "h", "j", "k", "l","💬", "z", "x", "c", "v", "b", "n", "m", "🗑️"];
+export const keyboardFirst: string[] = ["q", "w", "e", "r", "t", "y", "u", "i", "o", "p"]; 
+export const keyboardSecond: string[] = ["a", "s", "d", "f", "g", "h", "j", "k", "l"];
+export const keyboardThird: string[] = ["💬", "z", "x", "c", "v", "b", "n", "m", "🗑️"];

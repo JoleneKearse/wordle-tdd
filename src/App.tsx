@@ -3,7 +3,7 @@ import Keyboard from "./components/Keyboard";
 
 function App() {
   return (
-    <main className="flex flex-col items-center justify-center h-screen bg-neutral-100 dark:bg-neutral-900">
+    <main className="flex flex-col items-center justify-center w-full h-screen bg-neutral-100 dark:bg-neutral-900">
       <Header />
       <Keyboard />
     </main>

@@ -9,6 +9,7 @@ export default {
         "almost-dark": "#107F7B", // light mode
         "almost-light": "#16B6B0", // dark mode
         "neutral-100": "#EBEBEB", // light mode
+        "neutral-300": "#8a8a8a",
         // text and incorrect colours
         "neutral-400": "#858585", // dark mode
         "neutral-500": "#474747", // light mode

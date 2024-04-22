@@ -1,18 +1,36 @@
 import Button from "./Button";
-import { keyboard } from "../wordle";
+import { keyboardFirst, keyboardSecond, keyboardThird } from "../wordle";
 
 const Keyboard = () => {
-  const getColSpan = (letter: string) => {
-    const colSpanLetters = "a💬";
-    return colSpanLetters.includes(letter) ? "col-start-2" : "";
-  };
+  const getSpecialKeys = (letter: string) => {
+    const letterKeys = "💬🗑️";
+    return letterKeys.includes(letter) ? "bg-messages w-12" : "";
+  }
   
   return (
     <>
-      <article className="grid w-4/5 grid-cols-11 grid-rows-3 gap-3 max-w-prose">
-        {keyboard.map((letter) => (
-          <Button key={letter} letter={letter} className={`key ${getColSpan(letter)}`}></Button>
-        ))}
+      <article className="grid w-full grid-rows-3 gap-3">
+        <section className="flex justify-center gap-3">
+          {keyboardFirst.map((letter) => {
+            return (
+              <Button letter={letter} key={letter}></Button>
+            );
+          })}
+        </section>
+        <section className="flex justify-center gap-3">
+          {keyboardSecond.map((letter) => {
+            return (
+              <Button letter={letter} key={letter}></Button>
+            );
+          })}
+        </section>
+        <section className="flex justify-center gap-3">
+          {keyboardThird.map((letter) => {
+            return (
+              <Button letter={letter} key={letter} className={`key ${getSpecialKeys(letter)}`}></Button>
+            );
+          })}
+        </section>
       </article>
     </>
   );
