@@ -1,7 +1,7 @@
 const Header = () => {
   return (
-    <header className="text-center ">
-      <h1 className="bg-gradient-to-r from-correct-light via-correct-dark to-correct-dark inline-block text-transparent bg-clip-text font-extrabold text-4xl my-20">Awesome Wordle</h1>
+    <header className="text-center">
+      <h1 className="inline-block my-20 text-5xl font-extrabold text-transparent bg-gradient-to-r from-correct-light via-messages to-almost-light bg-clip-text">Awesome Wordle</h1>
     </header>
   );
 };
