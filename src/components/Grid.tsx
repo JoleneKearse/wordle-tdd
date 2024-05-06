@@ -1,40 +1,18 @@
+import Letter from "./Letter";
+
 const Grid = () => {
+  const rows = 5;
+  const columns = 5;
   return (
     <form>
-      <div className="flex gap-4 py-4">
-        <input
-          type="text"
-          name=""
-          id="firstGuessLetter1"
-          className="w-12 h-16 text-3xl font-bold border border-2 rounded-md border-neutral-600 bg-neutral-100 dark:bg-neutral-900 text-neutral-900 dark:text-neutral-300 focus-visible:ring-[#4a1837] uppercase text-center"
-        />
-        <input
-          type="text"
-          name=""
-          id="firstGuessLetter2"
-          className="w-12 h-16 text-3xl font-bold border border-2 rounded-md border-neutral-600 bg-neutral-100 dark:bg-neutral-900 text-neutral-900 dark:text-neutral-300 focus-visible:ring-[#4a1837] uppercase text-center"
-        />
-        <input
-          type="text"
-          name=""
-          id="firstGuessLetter3"
-          className="w-12 h-16 text-3xl font-bold border border-2 rounded-md border-neutral-600 bg-neutral-100 dark:bg-neutral-900 text-neutral-900 dark:text-neutral-300 focus-visible:ring-[#4a1837] uppercase text-center"
-        />
-        <input
-          type="text"
-          name=""
-          id="firstGuessLetter4"
-          className="w-12 h-16 text-3xl font-bold border border-2 rounded-md border-neutral-600 bg-neutral-100 dark:bg-neutral-900 text-neutral-900 dark:text-neutral-300 focus-visible:ring-[#4a1837] uppercase text-center"
-        />
-        <input
-          type="text"
-          name=""
-          id="firstGuessLetter5"
-          className="w-12 h-16 text-3xl font-bold border border-2 rounded-md border-neutral-600 bg-neutral-100 dark:bg-neutral-900 text-neutral-900 dark:text-neutral-300 focus-visible:ring-[#4a1837] uppercase text-center"
-        />
+      <div className="grid grid-cols-5 grid-rows-5 gap-2">
+        {Array.from({ length: rows }, (_, rowIndex) => {
+          return Array.from({ length: columns }, (_, columnIndex) => {
+            const id = `guess${rowIndex + 1}Letter${columnIndex + 1}`;
+            return <Letter id={id} key={id} />
+          });
+        }).flat()}
       </div>
-
-      
     </form>
   );
 };

@@ -4,7 +4,7 @@ type ButtonProps = {
 };
 
 const Button = ({ letter, className }: ButtonProps): JSX.Element => {
-  return <button className={`${className}`}>{letter.toUpperCase()}</button>;
+  return <button className={`${className}`}>{letter}</button>;
 };
 
 export default Button;
