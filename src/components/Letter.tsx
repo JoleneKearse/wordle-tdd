@@ -1,4 +1,7 @@
-const Letter = ({ id }) => {
+type LetterProps = {
+  id: string;
+};
+const Letter = ({ id }: LetterProps): JSX.Element => {
   return (
     <input
       type="text"
