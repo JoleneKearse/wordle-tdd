@@ -7,7 +7,6 @@ const Keyboard = () => {
     const result = letterKeys.includes(letter)
       ? "w-11 bg-messages-base py-3 text-base font-bold rounded-sm w-content text-neutral-100 dark:text-neutral-900"
       : "w-6 py-3 text-base font-bold rounded-sm w-content bg-neutral-400 text-neutral-100 dark:text-neutral-900";
-    console.log(letter, result);
     return result;
   };
 
